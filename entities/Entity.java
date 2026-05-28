@@ -11,6 +11,7 @@ public abstract class Entity {
         this.maxHealth = maxHealth;
     }
 
+    //getter and setter methods
     public String getName() {
         return name;
     }
@@ -22,6 +23,19 @@ public abstract class Entity {
     public int getMaxHealth() {
         return maxHealth;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHealth(int health) {
+        this.health = Math.min(health, maxHealth);
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+    
 
     public boolean isAlive() {
         return health > 0;
