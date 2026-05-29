@@ -1,0 +1,29 @@
+*.class
+*.log
+*.tmp
+*.swp
+*.swo
+*.jar
+*.war
+*.ear
+
+# Build outputs
+bin/
+build/
+out/
+target/
+dist/
+
+# IDE files
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Maven/Gradle
+.gradle/
+
+# OS files
+.DS_Store
+Thumbs.db
