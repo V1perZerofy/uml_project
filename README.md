@@ -31,7 +31,8 @@ java -cp out Main
 ## Projektstruktur
 
 ```
-src/
+dungeonadventure/
+├── ConsoleUI.java     # Zuständig für die "grafische" Terminaloberfläche
 ├── Main.java          # Einstiegspunkt, startet die GameEngine
 ├── GameEngine.java    # Spielsteuerung: Game-Loop, Eingaben, Kampfauflösung
 ├── Entity.java        # abstrakte Oberklasse (Name, Health)
