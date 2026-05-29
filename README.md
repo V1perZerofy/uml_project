@@ -1,7 +1,7 @@
 # Dungeon Adventure
 
 Ein kleines textbasiertes Konsolenspiel in Java. Der Spieler erkundet einen Dungeon aus mehreren Räumen, kämpft gegen Monster, handelt mit Merchants und sammelt Gegenstände. 
-Ziel ist es, den Dungeon lebendig zu überstehen.
+Ziel ist es, möglichst lange zu überleben – das Spiel endet, wenn der Spieler stirbt oder es per `quit` beendet wird.
 
 Das Projekt entstand im Rahmen der Ausbildung/SEPE (UML-Modellierung + OOP-Implementierung).
 
@@ -11,7 +11,7 @@ Das Projekt entstand im Rahmen der Ausbildung/SEPE (UML-Modellierung + OOP-Imple
 - Rundenbasiertes Kampfsystem (Spieler vs. Monster)
 - Handelssystem mit einem Merchant (Items kaufen, Gold verwalten)
 - Aufsammeln und Einsetzen von Gegenständen (z. B. HealingPotion)
-- Ein vollständiger Spieldurchlauf von Start bis Sieg oder Niederlage
+- Offene Erkundung ohne festes Spielende – beendet durch den Tod des Spielers oder per `quit`
 
 ## Voraussetzungen
 
@@ -59,6 +59,37 @@ Oder manuell:
 javac -encoding UTF-8 -d out Game.java dungeonadventure/*.java
 java -cp out Game
 ```
+
+## Spielablauf
+
+Gesteuert wird über einfache Textbefehle in der Konsole. Oben wird der aktuelle Raum
+angezeigt, darunter ein Log der letzten Ereignisse und eine Statuszeile mit HP-Balken,
+Gold und Anzahl der Items.
+
+### Befehle
+
+| Befehl | Wirkung |
+|--------|---------|
+| `go <richtung>` | In die angegebene Richtung gehen (z. B. `go north`) |
+| `fight` | Gegen das Monster im Raum kämpfen (eine Runde pro Eingabe) |
+| `take` | Den Gegenstand im Raum aufheben |
+| `talk` | Mit dem Merchant sprechen – zeigt Sortiment und Preise |
+| `buy <item>` | Einen Gegenstand beim Merchant kaufen (z. B. `buy Potion`) |
+| `use <item>` | Einen Gegenstand benutzen (z. B. `use Potion` zum Heilen) |
+| `inventory` / `inv` | Inventar und Gold anzeigen |
+| `look` | Den aktuellen Raum erneut beschreiben |
+| `quit` / `exit` | Das Spiel beenden |
+
+Item-Namen sind nicht case-sensitiv – `buy potion` funktioniert genauso wie `buy Potion`.
+
+### Hinweise
+
+- **Kampf** läuft rundenweise ab: Pro `fight` schlägt zuerst der Spieler zu, danach das
+  Monster. Sinkt die HP des Spielers unter 50 und er besitzt einen Heiltrank, trinkt er
+  automatisch einen.
+- **Beim Verlassen eines Raums** füllt der Merchant sein Sortiment wieder auf, und ein
+  besiegtes Monster erwacht beim nächsten Betreten erneut.
+- Das Spiel endet, wenn der Spieler stirbt oder `quit` eingegeben wird.
 
 ## Projektstruktur
 
