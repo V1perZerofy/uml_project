@@ -2,6 +2,7 @@ package dungeonadventure;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Room {
 
@@ -19,20 +20,29 @@ public class Room {
         this.exits = new HashMap<>();
     }
 
-    public void describe() {
-        System.out.println(description);
+    public String getDescription() {
+        return description;
+    }
+
+    public Set<String> getExitDirections() {
+        return exits.keySet();
+    }
+
+    public String describe() {
+        StringBuilder sb = new StringBuilder(description);
         if (hasMonster()) {
-            System.out.println("A " + monster.getName() + " is here.");
+            sb.append("\nA ").append(monster.getName()).append(" is here.");
         }
         if (hasMerchant()) {
-            System.out.println("A merchant, " + merchant.getName() + ", is here.");
+            sb.append("\nA merchant, ").append(merchant.getName()).append(", is here.");
         }
         if (hasItem()) {
-            System.out.println("You see a " + item.getName() + ".");
+            sb.append("\nYou see a ").append(item.getName()).append(".");
         }
         if (!exits.isEmpty()) {
-            System.out.println("Exits: " + String.join(", ", exits.keySet()));
+            sb.append("\nExits: ").append(String.join(", ", exits.keySet()));
         }
+        return sb.toString();
     }
 
     public Monster getMonster() {

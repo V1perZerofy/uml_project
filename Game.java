@@ -30,10 +30,6 @@ public class Game {
         rooms.add(lair);
         rooms.add(shop);
 
-        System.out.println("=== Dungeon Adventure ===");
-        System.out.println("Commands: go <dir>, fight, take, talk, buy <item>, use <item>, inventory, look, quit");
-        System.out.println();
-
         new GameEngine(player, entrance, rooms).start();
     }
 }

@@ -13,6 +13,7 @@ public class GameEngine {
 
     private final Scanner scanner = new Scanner(System.in);
     private final Random random = new Random();
+    private final ConsoleUI ui = new ConsoleUI();
 
     public GameEngine(Player player, Room startRoom, List<Room> rooms) {
         this.player = player;
@@ -22,15 +23,20 @@ public class GameEngine {
 
     public void start() {
         running = true;
-        currentRoom.describe();
+        ui.message("You enter the dungeon.");
+        ui.render(currentRoom, player);
         while (running && player.isAlive()) {
-            System.out.print("> ");
+            ui.prompt();
             String cmd = scanner.nextLine();
             handleInput(cmd);
+            if (running && player.isAlive()) {
+                ui.render(currentRoom, player);
+            }
         }
         if (!player.isAlive()) {
-            System.out.println("You have been defeated. Game over.");
+            ui.message("You have been defeated. Game over.");
         }
+        ui.render(currentRoom, player);
     }
 
     public void handleInput(String cmd) {
@@ -46,69 +52,69 @@ public class GameEngine {
             if (currentRoom.hasMonster() && currentRoom.getMonster().isAlive()) {
                 resolveCombat(player, currentRoom.getMonster());
             } else {
-                System.out.println("There is nothing to fight here.");
+                ui.message("There is nothing to fight here.");
             }
         } else if (input.equals("take")) {
             if (currentRoom.hasItem()) {
                 Item item = currentRoom.getItem();
                 player.pickUp(item);
                 currentRoom.removeItem();
-                System.out.println("You picked up " + item.getName() + ".");
+                ui.message("You picked up " + item.getName() + ".");
             } else {
-                System.out.println("There is nothing to take.");
+                ui.message("There is nothing to take.");
             }
         } else if (input.equals("talk")) {
             if (currentRoom.hasMerchant()) {
                 Merchant merchant = currentRoom.getMerchant();
-                System.out.println(merchant.interact());
+                ui.message(merchant.interact());
                 if (merchant.getInventory().isEmpty()) {
-                    System.out.println("The merchant has nothing for sale.");
+                    ui.message("The merchant has nothing for sale.");
                 } else {
-                    System.out.println("For sale:");
+                    ui.message("For sale:");
                     for (Item item : merchant.getInventory()) {
-                        System.out.println("  " + item.getName() + " - " + merchant.getPrice(item) + " gold");
+                        ui.message("  " + item.getName() + " - " + merchant.getPrice(item) + " gold");
                     }
                 }
             } else {
-                System.out.println("There is no one to talk to.");
+                ui.message("There is no one to talk to.");
             }
         } else if (input.equals("inventory") || input.equals("inv")) {
             if (player.getInventory().isEmpty()) {
-                System.out.println("Your inventory is empty.");
+                ui.message("Your inventory is empty.");
             } else {
-                System.out.println("You are carrying (" + player.getGold() + " gold):");
+                ui.message("You are carrying (" + player.getGold() + " gold):");
                 for (Item item : player.getInventory()) {
-                    System.out.println("  " + item.getName());
+                    ui.message("  " + item.getName());
                 }
             }
         } else if (input.startsWith("use ")) {
             String name = input.substring(4).trim();
             Item item = findByName(player.getInventory(), name);
             if (item == null) {
-                System.out.println("You do not have that.");
+                ui.message("You do not have that.");
             } else {
                 player.useItem(item);
-                System.out.println("You used " + item.getName() + ".");
+                ui.message("You used " + item.getName() + ".");
             }
         } else if (input.startsWith("buy ")) {
             if (!currentRoom.hasMerchant()) {
-                System.out.println("There is no merchant here.");
+                ui.message("There is no merchant here.");
             } else {
                 Merchant merchant = currentRoom.getMerchant();
                 String name = input.substring(4).trim();
                 Item item = findByName(merchant.getInventory(), name);
                 if (item == null) {
-                    System.out.println("The merchant does not sell that.");
+                    ui.message("The merchant does not sell that.");
                 } else if (merchant.trade(player, item)) {
-                    System.out.println("You bought " + item.getName() + ".");
+                    ui.message("You bought " + item.getName() + ".");
                 } else {
-                    System.out.println("You cannot afford that.");
+                    ui.message("You cannot afford that.");
                 }
             }
         } else if (input.equals("look")) {
-            currentRoom.describe();
+            ui.message("You look around.");
         } else {
-            System.out.println("Unknown command.");
+            ui.message("Unknown command.");
         }
     }
 
@@ -124,34 +130,27 @@ public class GameEngine {
     public void movePlayer(String direction) {
         Room next = currentRoom.getExit(direction);
         if (next == null) {
-            System.out.println("You cannot go that way.");
+            ui.message("You cannot go that way.");
             return;
         }
         currentRoom = next;
-        currentRoom.describe();
+        ui.message("You go " + direction + ".");
     }
 
     public void resolveCombat(Player p, Monster m) {
-        while (p.isAlive() && m.isAlive()) {
-            int playerDmg = p.attack();
-            m.defend(playerDmg);
-            System.out.println(p.getName() + " hits " + m.getName() + " for " + playerDmg + ".");
-            if (!m.isAlive()) {
-                break;
-            }
-            int monsterDmg = m.attack();
-            p.defend(monsterDmg);
-            System.out.println(m.getName() + " hits " + p.getName() + " for " + monsterDmg + ".");
+        int playerDmg = p.attack();
+        m.defend(playerDmg);
+        ui.message(p.getName() + " hits " + m.getName() + " for " + playerDmg + ".");
+        if (!m.isAlive()) {
+            ui.message("You have defeated " + m.getName() + "!");
+            return;
         }
+        int monsterDmg = m.attack();
+        p.defend(monsterDmg);
+        ui.message(m.getName() + " hits " + p.getName() + " for " + monsterDmg + ".");
         if (!p.isAlive()) {
             running = false;
             return;
-        }
-        System.out.println(m.getName() + " is defeated.");
-        Item loot = m.dropLoot();
-        if (loot != null) {
-            p.pickUp(loot);
-            System.out.println("You loot " + loot.getName() + ".");
         }
     }
 

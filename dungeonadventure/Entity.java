@@ -27,4 +27,8 @@ public abstract class Entity {
     public int getHealth() {
         return health;
     }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
 }
