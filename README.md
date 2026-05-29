@@ -20,9 +20,43 @@ Das Projekt entstand im Rahmen der Ausbildung/SEPE (UML-Modellierung + OOP-Imple
 
 ## Starten
 
+Voraussetzung ist ein installiertes JDK (`javac` und `java` im PATH) sowie ein UTF-8-fähiges
+Terminal. Das Spiel besteht aus `Game.java` (Einstiegspunkt) und dem Paket `dungeonadventure/`.
+Das Flag `-encoding UTF-8` ist nötig, weil die Oberfläche Unicode-Zeichen (Rahmen, Balken)
+verwendet.
+
+### Windows
+
+Per Skript:
+
+```bat
+run.bat
+```
+
+Oder manuell (z. B. in der Windows-Eingabeaufforderung oder Windows Terminal):
+
+```bat
+chcp 65001
+javac -encoding UTF-8 -d out Game.java dungeonadventure\*.java
+java -cp out Game
+```
+
+`chcp 65001` stellt die Konsole auf UTF-8 um, damit Rahmen- und Balkenzeichen korrekt
+angezeigt werden.
+
+### macOS / Linux
+
+Per Skript:
+
 ```bash
-chcp 65001 >nul #only on windows
-javac -encoding UTF-8 -d out *.java
+chmod +x run.sh
+./run.sh
+```
+
+Oder manuell:
+
+```bash
+javac -encoding UTF-8 -d out Game.java dungeonadventure/*.java
 java -cp out Game
 ```
 
