@@ -16,18 +16,18 @@ public class Game {
         trader.getInventory().add(new HealingPotion("Elixir", "Restores a lot of health.", 50));
 
         Room entrance = new Room("A damp stone entrance hall.", null, null, null);
-        Room basement = new Room("A dark basement reeking of decay.", goblin, null,
+        Room lair = new Room("A dark lair reeking of decay.", goblin, null,
                 new HealingPotion("Potion", "Restores health.", 20));
         Room shop = new Room("A small candle-lit alcove.", null, trader, null);
 
-        entrance.addExit("north", basement);
-        basement.addExit("south", entrance);
+        entrance.addExit("north", lair);
+        lair.addExit("south", entrance);
         entrance.addExit("east", shop);
         shop.addExit("west", entrance);
 
         List<Room> rooms = new ArrayList<>();
         rooms.add(entrance);
-        rooms.add(basement);
+        rooms.add(lair);
         rooms.add(shop);
 
         System.out.println("=== Dungeon Adventure ===");
