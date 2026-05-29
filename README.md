@@ -76,6 +76,7 @@ Gold und Anzahl der Items.
 | `talk` | Mit dem Merchant sprechen – zeigt Sortiment und Preise |
 | `buy <item>` | Einen Gegenstand beim Merchant kaufen (z. B. `buy Potion`) |
 | `use <item>` | Einen Gegenstand benutzen (z. B. `use Potion` zum Heilen) |
+| `examine <item>` | Beschreibung eines Gegenstands anzeigen (Inventar, Raum oder Händler) |
 | `inventory` / `inv` | Inventar und Gold anzeigen |
 | `look` | Den aktuellen Raum erneut beschreiben |
 | `quit` / `exit` | Das Spiel beenden |

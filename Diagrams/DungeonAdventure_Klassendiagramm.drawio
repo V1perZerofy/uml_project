@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Seite-1" id="k6ame3-N0e_dmNs88R9X">
-        <mxGraphModel dx="2447" dy="2370" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1532" dy="2220" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -35,9 +35,9 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="zY28io7NqH1kwVP1bxbm-3" value="&amp;lt;&amp;lt;abstract&amp;gt;&amp;gt; Item" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-                    <mxGeometry x="840" y="340" width="200" height="180" as="geometry"/>
+                    <mxGeometry x="840" y="340" width="200" height="190" as="geometry"/>
                 </mxCell>
-                <mxCell id="zY28io7NqH1kwVP1bxbm-20" value="+Item(name: String, description: String)&lt;div&gt;+use(target: Entity): void&lt;/div&gt;&lt;div&gt;+getName(): String&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" parent="zY28io7NqH1kwVP1bxbm-3" vertex="1">
+                <mxCell id="zY28io7NqH1kwVP1bxbm-20" value="+Item(name: String, description: String)&lt;div&gt;+use(target: Entity): void&lt;/div&gt;&lt;div&gt;+getName(): String&lt;/div&gt;&lt;div&gt;+getDescription():String&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" parent="zY28io7NqH1kwVP1bxbm-3" vertex="1">
                     <mxGeometry y="80" width="200" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="zY28io7NqH1kwVP1bxbm-19" value="-name: String&lt;div&gt;-description: String&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" parent="zY28io7NqH1kwVP1bxbm-3" vertex="1">
@@ -222,16 +222,16 @@
                         <mxPoint as="offset"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="game-1" value="Game" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+                <mxCell id="game-1" value="Game" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
                     <mxGeometry x="510" y="-730" width="290" height="80" as="geometry"/>
                 </mxCell>
-                <mxCell id="game-2" value="+main(args: String[]): void" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" vertex="1" parent="game-1">
+                <mxCell id="game-2" value="+main(args: String[]): void" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" parent="game-1" vertex="1">
                     <mxGeometry y="20" width="290" height="60" as="geometry"/>
                 </mxCell>
-                <mxCell id="game-edge" value="&amp;lt;&amp;lt;create&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;" edge="1" parent="1" source="game-1" target="zY28io7NqH1kwVP1bxbm-33">
+                <mxCell id="game-edge" value="&amp;lt;&amp;lt;create&amp;gt;&amp;gt;" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endFill=0;dashed=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=12;" parent="1" source="game-1" target="zY28io7NqH1kwVP1bxbm-33" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="ui-edge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamondThin;startFill=1;endArrow=none;exitX=1;exitY=0.25;exitDx=0;exitDy=0;fontSize=12;" edge="1" parent="1" source="zY28io7NqH1kwVP1bxbm-37" target="ui-1">
+                <mxCell id="ui-edge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;startArrow=diamondThin;startFill=1;endArrow=none;exitX=1;exitY=0.25;exitDx=0;exitDy=0;fontSize=12;" parent="1" source="zY28io7NqH1kwVP1bxbm-37" target="ui-1" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="890" y="-397" as="targetPoint"/>
                         <Array as="points">
@@ -240,16 +240,16 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="ui-1" value="ConsoleUI" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+                <mxCell id="ui-1" value="ConsoleUI" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
                     <mxGeometry x="890" y="-490" width="300" height="180" as="geometry"/>
                 </mxCell>
-                <mxCell id="ui-2" value="-log: Deque&amp;lt;String&amp;gt;&lt;div&gt;-out: PrintStream&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" vertex="1" parent="ui-1">
+                <mxCell id="ui-2" value="-log: Deque&amp;lt;String&amp;gt;&lt;div&gt;-out: PrintStream&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" parent="ui-1" vertex="1">
                     <mxGeometry y="20" width="300" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="ui-3" value="+ConsoleUI()&lt;div&gt;+message(text: String): void&lt;/div&gt;&lt;div&gt;+render(room: Room, player: Player): void&lt;/div&gt;&lt;div&gt;+prompt(): void&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" vertex="1" parent="ui-1">
+                <mxCell id="ui-3" value="+ConsoleUI()&lt;div&gt;+message(text: String): void&lt;/div&gt;&lt;div&gt;+render(room: Room, player: Player): void&lt;/div&gt;&lt;div&gt;+prompt(): void&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" parent="ui-1" vertex="1">
                     <mxGeometry y="70" width="300" height="90" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;rounded=0;curved=0;endArrow=diamondThin;endFill=0;endSize=8;" edge="1" parent="1" source="zY28io7NqH1kwVP1bxbm-4" target="zY28io7NqH1kwVP1bxbm-19">
+                <mxCell id="6" style="edgeStyle=none;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;rounded=0;curved=0;endArrow=diamondThin;endFill=0;endSize=8;" parent="1" source="zY28io7NqH1kwVP1bxbm-4" target="zY28io7NqH1kwVP1bxbm-19" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <Array as="points">
                             <mxPoint x="455" y="-790"/>
@@ -264,7 +264,7 @@
                         <mxPoint x="1040" y="410" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="7" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6">
+                <mxCell id="7" value="0..*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="6" vertex="1" connectable="0">
                     <mxGeometry x="0.5404" y="-2" relative="1" as="geometry">
                         <mxPoint as="offset"/>
                     </mxGeometry>

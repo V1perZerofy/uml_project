@@ -22,7 +22,7 @@ public class Game {
         Merchant alchemist = new Merchant("Mad Alchemist", 100,
                 "Heh heh... fresh brews! Type 'buy <item>' if you dare.", "Gold");
         alchemist.addStock(new HealingPotion("Questionable Brew", "Smells faintly of feet. Restores 15 health.", 15));
-        alchemist.addStock(new HealingPotion("Definitely Not Poison", "Just trust the label. Restores 30 health.", 30));
+        alchemist.addStock(new HealingPotion("Definitely Not Poison", "Just trust the label.", -30));
         alchemist.addStock(new HealingPotion("Grandma's Mystery Juice", "Nobody asks what is in it. Restores 60 health.", 60));
 
         Room entrance = new Room("A damp stone entrance hall.", null, null, null);

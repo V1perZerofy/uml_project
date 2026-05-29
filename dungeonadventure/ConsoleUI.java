@@ -121,7 +121,8 @@ public class ConsoleUI {
     private void appendHint(StringBuilder sb) {
         String sep = " " + GRAY + DOT + " ";
         line(sb, " " + GRAY + "go <dir>" + sep + "fight" + sep + "take" + sep + "talk" + sep
-                + "buy <item>" + sep + "use <item>" + sep + "inv" + sep + "look" + sep + "quit" + RESET);
+                + "buy <item>" + sep + "use <item>" + sep + "examine <item>" + sep + "inv" + sep
+                + "look" + sep + "quit" + RESET);
     }
 
     private String hpBar(int hp, int max) {

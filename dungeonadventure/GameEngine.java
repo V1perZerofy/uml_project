@@ -111,6 +111,21 @@ public class GameEngine {
                     ui.message("You cannot afford that.");
                 }
             }
+        } else if (input.startsWith("examine ") || input.startsWith("inspect ")) {
+            String name = input.substring(input.indexOf(' ') + 1).trim();
+            Item item = findByName(player.getInventory(), name);
+            if (item == null && currentRoom.hasItem()
+                    && currentRoom.getItem().getName().toLowerCase().equals(name)) {
+                item = currentRoom.getItem();
+            }
+            if (item == null && currentRoom.hasMerchant()) {
+                item = findByName(currentRoom.getMerchant().getInventory(), name);
+            }
+            if (item == null) {
+                ui.message("There is no " + name + " to examine.");
+            } else {
+                ui.message(item.getName() + ": " + item.getDescription());
+            }
         } else if (input.equals("look")) {
             ui.message("You look around.");
         } else {
