@@ -9,6 +9,7 @@ public class Merchant extends NPC {
 
     private List<Item> inventory;
     private String currencyName;
+    private final List<Item> stockTemplate = new ArrayList<>();
 
     public Merchant(String name, int maxHealth, String dialogText, String currencyName) {
         super(name, maxHealth, dialogText, false);
@@ -20,12 +21,25 @@ public class Merchant extends NPC {
         return inventory;
     }
 
+    public void addStock(Item item) {
+        stockTemplate.add(item);
+        inventory.add(item);
+    }
+
     public int getPrice(Item item) {
         return DEFAULT_PRICE;
     }
 
     public void restock() {
-        // TODO: needs a stock source/template to define what gets restocked
+        if (stockTemplate.isEmpty()) {
+            stockTemplate.addAll(inventory);
+            return;
+        }
+        for (Item item : stockTemplate) {
+            if (!inventory.contains(item)) {
+                inventory.add(item);
+            }
+        }
     }
 
     @Override

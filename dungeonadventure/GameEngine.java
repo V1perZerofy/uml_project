@@ -133,24 +133,69 @@ public class GameEngine {
             ui.message("You cannot go that way.");
             return;
         }
+        if (currentRoom.hasMerchant()) {
+            currentRoom.getMerchant().restock();
+        }
+        if (currentRoom.hasMonster() && !currentRoom.getMonster().isAlive()) {
+            Monster m = currentRoom.getMonster();
+            m.heal(m.getMaxHealth());
+        }
         currentRoom = next;
         ui.message("You go " + direction + ".");
     }
 
     public void resolveCombat(Player p, Monster m) {
-        int playerDmg = p.attack();
-        m.defend(playerDmg);
-        ui.message(p.getName() + " hits " + m.getName() + " for " + playerDmg + ".");
-        if (!m.isAlive()) {
-            ui.message("You have defeated " + m.getName() + "!");
-            return;
+        while (p.isAlive() && m.isAlive()) {
+            int playerDmg = p.attack();
+            m.defend(playerDmg);
+            ui.message(p.getName() + " hits " + m.getName() + " for " + playerDmg + ".");
+            ui.render(currentRoom, p);
+            pause();
+            if (!m.isAlive()) {
+                break;
+            }
+            int monsterDmg = m.attack();
+            p.defend(monsterDmg);
+            ui.message(m.getName() + " hits " + p.getName() + " for " + monsterDmg + ".");
+            ui.render(currentRoom, p);
+            pause();
+            if (p.isAlive() && p.getHealth() < 50 && p.hasHealingPotion()) {
+                HealingPotion potion = findPotion(p);
+                if (potion != null) {
+                    p.useItem(potion);
+                    ui.message(p.getName() + " drinks " + potion.getName() + " and recovers.");
+                    ui.render(currentRoom, p);
+                    pause();
+                }
+            }
         }
-        int monsterDmg = m.attack();
-        p.defend(monsterDmg);
-        ui.message(m.getName() + " hits " + p.getName() + " for " + monsterDmg + ".");
         if (!p.isAlive()) {
             running = false;
             return;
+        }
+        ui.message("You have defeated " + m.getName() + "!");
+        Item loot = m.dropLoot();
+        if (loot != null) {
+            p.pickUp(loot);
+            ui.message("You loot " + loot.getName() + ".");
+        }
+        ui.render(currentRoom, p);
+    }
+
+    private HealingPotion findPotion(Player p) {
+        for (Item item : p.getInventory()) {
+            if (item instanceof HealingPotion) {
+                return (HealingPotion) item;
+            }
+        }
+        return null;
+    }
+
+    private void pause() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 

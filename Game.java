@@ -12,8 +12,8 @@ public class Game {
 
         Merchant trader = new Merchant("Trader", 100,
                 "Welcome, traveler. Type 'buy <item>' to purchase.", "Gold");
-        trader.getInventory().add(new HealingPotion("Potion", "Restores health.", 20));
-        trader.getInventory().add(new HealingPotion("Elixir", "Restores a lot of health.", 50));
+        trader.addStock(new HealingPotion("Potion", "Restores health.", 20));
+        trader.addStock(new HealingPotion("Elixir", "Restores a lot of health.", 50));
 
         Room entrance = new Room("A damp stone entrance hall.", null, null, null);
         Room lair = new Room("A dark lair reeking of decay.", goblin, null,
