@@ -21,11 +21,9 @@ Das Projekt entstand im Rahmen der Ausbildung/SEPE (UML-Modellierung + OOP-Imple
 ## Starten
 
 ```bash
-# kompilieren
-javac -d out src/*.java
-
-# starten
-java -cp out Main
+chcp 65001 >nul #only on windows
+javac -encoding UTF-8 -d out *.java
+java -cp out Game
 ```
 
 ## Projektstruktur
@@ -33,7 +31,6 @@ java -cp out Main
 ```
 dungeonadventure/
 ├── ConsoleUI.java     # Zuständig für die "grafische" Terminaloberfläche
-├── Main.java          # Einstiegspunkt, startet die GameEngine
 ├── GameEngine.java    # Spielsteuerung: Game-Loop, Eingaben, Kampfauflösung
 ├── Entity.java        # abstrakte Oberklasse (Name, Health)
 ├── IFightable.java    # Interface für kampffähige Entitäten
@@ -44,6 +41,7 @@ dungeonadventure/
 ├── Item.java          # abstrakte Oberklasse für Gegenstände
 ├── HealingPotion.java # konkreter Gegenstand (Heilung)
 └── Room.java          # Raum (Inhalt, Ausgänge)
+Game.java              # Einstiegspunkt, startet die GameEngine
 ```
 
 ## Designentscheidungen
