@@ -90,7 +90,7 @@
             <mxPoint x="390" y="50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zY28io7NqH1kwVP1bxbm-14" parent="zY28io7NqH1kwVP1bxbm-4" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="&lt;div&gt;+useItem(item:Item):void&lt;/div&gt;&lt;div&gt;+pickUp(item:Item):void&lt;/div&gt;&lt;div&gt;+hasHealingPotion():Boolean&lt;/div&gt;" vertex="1">
+        <mxCell id="zY28io7NqH1kwVP1bxbm-14" parent="zY28io7NqH1kwVP1bxbm-4" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="&lt;div&gt;+useItem(item:Item):void&lt;/div&gt;&lt;div&gt;+pickUp(item:Item):void&lt;/div&gt;&lt;div&gt;+hasHealingPotion():Boolean&lt;/div&gt;&lt;div&gt;+getGold():int&lt;/div&gt;" vertex="1">
           <mxGeometry height="90" width="200" y="70" as="geometry" />
         </mxCell>
         <mxCell id="zY28io7NqH1kwVP1bxbm-42" edge="1" parent="1" source="zY28io7NqH1kwVP1bxbm-17" style="edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;endArrow=diamondThin;endFill=0;" target="zY28io7NqH1kwVP1bxbm-31">
@@ -248,7 +248,7 @@
             <mxPoint x="390" y="50" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="zY28io7NqH1kwVP1bxbm-71" parent="zY28io7NqH1kwVP1bxbm-68" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="&lt;div&gt;+getInventory():List&amp;lt;Item&amp;gt;&lt;/div&gt;&lt;div&gt;+getPrice(item: Item): int&lt;/div&gt;&lt;div&gt;+restock():void&lt;/div&gt;&lt;div&gt;+interact():String&lt;/div&gt;&lt;div&gt;+removeFromInventory(item: Item):void&lt;/div&gt;" vertex="1">
+        <mxCell id="zY28io7NqH1kwVP1bxbm-71" parent="zY28io7NqH1kwVP1bxbm-68" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=top;rounded=0;fontSize=16;" value="&lt;div&gt;+getInventory():List&amp;lt;Item&amp;gt;&lt;/div&gt;&lt;div&gt;+getPrice(item: Item): int&lt;/div&gt;&lt;div&gt;+restock():void&lt;/div&gt;&lt;div&gt;+interact():String&lt;/div&gt;&lt;div&gt;+removeFromInventory(item: Item):void&lt;/div&gt;&lt;div&gt;+trade(player: Player, item: Item): boolean&lt;/div&gt;" vertex="1">
           <mxGeometry height="160" width="320" y="70" as="geometry" />
         </mxCell>
         <mxCell id="-gRIn4hHkIVNmadms3U9-5" edge="1" parent="1" source="zY28io7NqH1kwVP1bxbm-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;curved=0;endArrow=none;endFill=0;startArrow=diamondThin;startFill=1;startSize=8;" target="zY28io7NqH1kwVP1bxbm-29">
