@@ -59,66 +59,15 @@ public class GameEngine {
             }
         } else if (input.equals("talk")) {
             if (currentRoom.hasMerchant()) {
-                Merchant merchant = currentRoom.getMerchant();
-                System.out.println(merchant.interact());
-                if (merchant.getInventory().isEmpty()) {
-                    System.out.println("The merchant has nothing for sale.");
-                } else {
-                    System.out.println("For sale:");
-                    for (Item item : merchant.getInventory()) {
-                        System.out.println("  " + item.getName() + " - " + merchant.getPrice(item) + " gold");
-                    }
-                }
+                System.out.println(currentRoom.getMerchant().interact());
             } else {
                 System.out.println("There is no one to talk to.");
-            }
-        } else if (input.equals("inventory") || input.equals("inv")) {
-            if (player.getInventory().isEmpty()) {
-                System.out.println("Your inventory is empty.");
-            } else {
-                System.out.println("You are carrying (" + player.getGold() + " gold):");
-                for (Item item : player.getInventory()) {
-                    System.out.println("  " + item.getName());
-                }
-            }
-        } else if (input.startsWith("use ")) {
-            String name = input.substring(4).trim();
-            Item item = findByName(player.getInventory(), name);
-            if (item == null) {
-                System.out.println("You do not have that.");
-            } else {
-                player.useItem(item);
-                System.out.println("You used " + item.getName() + ".");
-            }
-        } else if (input.startsWith("buy ")) {
-            if (!currentRoom.hasMerchant()) {
-                System.out.println("There is no merchant here.");
-            } else {
-                Merchant merchant = currentRoom.getMerchant();
-                String name = input.substring(4).trim();
-                Item item = findByName(merchant.getInventory(), name);
-                if (item == null) {
-                    System.out.println("The merchant does not sell that.");
-                } else if (merchant.trade(player, item)) {
-                    System.out.println("You bought " + item.getName() + ".");
-                } else {
-                    System.out.println("You cannot afford that.");
-                }
             }
         } else if (input.equals("look")) {
             currentRoom.describe();
         } else {
             System.out.println("Unknown command.");
         }
-    }
-
-    private Item findByName(List<Item> items, String name) {
-        for (Item item : items) {
-            if (item.getName().toLowerCase().equals(name)) {
-                return item;
-            }
-        }
-        return null;
     }
 
     public void movePlayer(String direction) {

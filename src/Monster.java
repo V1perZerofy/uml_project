@@ -1,12 +1,3 @@
-<<<<<<< HEAD:entities/Monster.java
-class Monster implements IFightable{
-  private Item lootDrop;
-  private int difficulty;
-  
-  public Monster(int pDifficulty){
-    difficulty = pDifficulty
-  }
-=======
 package dungeonadventure;
 
 public class Monster extends Entity implements IFightable {
@@ -36,5 +27,4 @@ public class Monster extends Entity implements IFightable {
             health = 0;
         }
     }
->>>>>>> origin/feature/Entities:src/Monster.java
 }

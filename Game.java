@@ -1,5 +1,4 @@
-package dungeonadventure;
-
+import dungeonadventure.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class Game {
 
         List<Room> rooms = new ArrayList<>();
         rooms.add(entrance);
-        rooms.add(lair);
+        rooms.add(basement);
         rooms.add(shop);
 
         System.out.println("=== Dungeon Adventure ===");

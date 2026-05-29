@@ -1,35 +1,3 @@
-<<<<<<< HEAD:entities/Merchant.java
-class Merchant extends NPC {
-  private List<Item> inventory;
-  private String currncyName;
-
-  public Merchant(){
-
-  }
-  
-  public List<Item> getInventory() {
-    return inventory;
-  }
-
-  public int getPrice(Item item) {
-    price = item.getBasePrice();
-    return price * 1.2;
-  }
-  
-  public int restock(Item item, int quantity) {
-    inventory.add(item);
-    return quantity;
-  }
-
-  public String interact() {
-    return "Welcome to my shop! Take a look at my wares.";
-  }
-
-  public void removeFromInventory(Item item) {
-    inventory.remove(item);
-  }
-
-=======
 package dungeonadventure;
 
 import java.util.ArrayList;
@@ -37,16 +5,14 @@ import java.util.List;
 
 public class Merchant extends NPC {
 
-    private final int DEFAULT_PRICE = 10;
-    private int merchant_multiplier;
+    private static final int DEFAULT_PRICE = 10;
 
     private List<Item> inventory;
     private String currencyName;
 
-    public Merchant(String name, int maxHealth, String dialogText, String currencyName, int merchant_multiplier) {
+    public Merchant(String name, int maxHealth, String dialogText, String currencyName) {
         super(name, maxHealth, dialogText, false);
         this.currencyName = currencyName;
-        this.merchant_multiplier = merchant_multiplier;
         this.inventory = new ArrayList<>();
     }
 
@@ -55,7 +21,7 @@ public class Merchant extends NPC {
     }
 
     public int getPrice(Item item) {
-        return (int) (DEFAULT_PRICE * merchant_multiplier);
+        return DEFAULT_PRICE;
     }
 
     public void restock() {
@@ -83,5 +49,4 @@ public class Merchant extends NPC {
         player.pickUp(item);
         return true;
     }
->>>>>>> origin/feature/Entities:src/Merchant.java
 }
