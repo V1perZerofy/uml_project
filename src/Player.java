@@ -36,6 +36,10 @@ public class Player extends Entity implements IFightable {
         return false;
     }
 
+    public List<Item> getInventory() {
+        return inventory;
+    }
+
     public int getGold() {
         return gold;
     }
