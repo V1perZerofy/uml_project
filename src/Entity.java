@@ -1,14 +1,23 @@
-//Java Class Entity
+package dungeonadventure;
 
 public abstract class Entity {
+
     protected String name;
     protected int health;
     protected int maxHealth;
 
-    public Entity(String name, int health, int maxHealth) {
+    public Entity(String name, int maxHealth) {
         this.name = name;
-        this.health = health;
         this.maxHealth = maxHealth;
+        this.health = maxHealth;
+    }
+
+    public boolean isAlive() {
+        return health > 0;
+    }
+
+    public void heal(int amount) {
+        health = Math.min(maxHealth, health + amount);
     }
 
     public String getName() {
@@ -17,13 +26,5 @@ public abstract class Entity {
 
     public int getHealth() {
         return health;
-    }
-    
-    public int getMaxHealth() {
-        return maxHealth;
-    }
-
-    public boolean isAlive() {
-        return health > 0;
     }
 }
